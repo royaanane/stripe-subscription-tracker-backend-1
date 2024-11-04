@@ -16,9 +16,8 @@ Rails: Ensure you have Rails installed.
 Stripe Account: Create a free Stripe account and enable Test Mode to simulate subscription events.
 Stripe CLI: Install the Stripe CLI to forward Stripe events to your local environment.
 Getting Started
-Clone the Repository:
+1 - Clone the Repository:
 
-bash
 
 git clone <repository-url>
 cd rails-stripe-event-processor
@@ -28,37 +27,35 @@ STRIPE_SIGNIN_SECRET: Your Stripe webhook signing secret.
 Any other required keys for your setup.
 Install Dependencies:
 
-bash
+`bundle install`
 
-bundle install
-Database Setup:
+2 - Database Setup:
 
-bash
+`rails db:create`
+`rails db:migrate`
 
-rails db:create
-rails db:migrate
 Running the Application
 Start the Server:
 
-bash
-
-rails server -p 3000
+`rails server -p 3000`
 Setup Stripe Webhooks: In two separate terminal tabs, run the following to listen for events:
 
-bash
 
-stripe listen --events=customer.subscription.created --forward-to localhost:3000/stripe_subscriptions
-stripe listen --events=invoice.paid --forward-to localhost:3000/stripe_invoices
-Create and Manage Subscriptions:
+`stripe listen --events=customer.subscription.created --forward-to localhost:3000/stripe_subscriptions`
+`stripe listen --events=invoice.paid --forward-to localhost:3000/stripe_invoices`
+
+
+3 - Create and Manage Subscriptions:
 
 Use the Stripe Test Dashboard to create a subscription.
 Set the invoice status as "Paid" in the Invoices Dashboard.
 The application will update the subscription status from unpaid to paid in response to the paid invoice event.
-Testing
+
+4 - Testing
+
 Run tests to verify the subscription creation and payment flow:
 
-bash
+`rails test`
 
-rails test
-Notes
+5 - Notes
 In scenarios where both subscription and invoice events occur simultaneously (such as auto-charged payment methods), the application may receive events out of order. Further discussion or handling strategies could address this behavior.
