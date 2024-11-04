@@ -19,7 +19,7 @@ Getting Started
 Clone the Repository:
 
 bash
-Copier le code
+
 git clone <repository-url>
 cd rails-stripe-event-processor
 Environment Variables: Create an .env file in the root directory with the following variables:
@@ -29,24 +29,24 @@ Any other required keys for your setup.
 Install Dependencies:
 
 bash
-Copier le code
+
 bundle install
 Database Setup:
 
 bash
-Copier le code
+
 rails db:create
 rails db:migrate
 Running the Application
 Start the Server:
 
 bash
-Copier le code
+
 rails server -p 3000
 Setup Stripe Webhooks: In two separate terminal tabs, run the following to listen for events:
 
 bash
-Copier le code
+
 stripe listen --events=customer.subscription.created --forward-to localhost:3000/stripe_subscriptions
 stripe listen --events=invoice.paid --forward-to localhost:3000/stripe_invoices
 Create and Manage Subscriptions:
@@ -58,7 +58,7 @@ Testing
 Run tests to verify the subscription creation and payment flow:
 
 bash
-Copier le code
+
 rails test
 Notes
 In scenarios where both subscription and invoice events occur simultaneously (such as auto-charged payment methods), the application may receive events out of order. Further discussion or handling strategies could address this behavior.
