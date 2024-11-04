@@ -15,9 +15,9 @@ Prerequisites
 Rails: Ensure you have Rails installed.
 Stripe Account: Create a free Stripe account and enable Test Mode to simulate subscription events.
 Stripe CLI: Install the Stripe CLI to forward Stripe events to your local environment.
-Getting Started
-1 - Clone the Repository:
+Getting Started:
 
+1 - Clone the Repository:
 
 git clone <repository-url>
 cd rails-stripe-event-processor
@@ -58,4 +58,5 @@ Run tests to verify the subscription creation and payment flow:
 `rails test`
 
 5 - Notes
+
 In scenarios where both subscription and invoice events occur simultaneously (such as auto-charged payment methods), the application may receive events out of order. Further discussion or handling strategies could address this behavior.
